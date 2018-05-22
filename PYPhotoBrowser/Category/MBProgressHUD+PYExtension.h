@@ -1,10 +1,7 @@
 
 
-#if __has_include(<MBProgressHUD/MBProgressHUD.h>)
-#import <MBProgressHUD/MBProgressHUD.h>
-#else
+
 #import "MBProgressHUD.h"
-#endif
 
 @interface MBProgressHUD (PY)
 /** 显示成功信息 */
