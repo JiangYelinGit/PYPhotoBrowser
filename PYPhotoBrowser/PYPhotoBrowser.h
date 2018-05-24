@@ -5,3 +5,4 @@
 
 #import "PYPhotosView.h"
 #import "PYPhotoBrowseView.h"
+#import "NSBundle+PYPhotoBrowserExtension.h"

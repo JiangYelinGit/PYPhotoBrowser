@@ -14,7 +14,7 @@
 #import "PYProgressView.h"
 #import "MBProgressHUD+PYExtension.h"
 #import "PYPhotoBrowseView.h"
-
+#import "NSBundle+PYPhotoBrowserExtension.h"
 // 是否正常显示动画，内部使用不建议修改此参数
 static BOOL _showOrHiddenAnimating;
 
@@ -80,7 +80,7 @@ static BOOL _showOrHiddenAnimating;
         
         // 添加加载失败
         UIImageView *loadFailureView = [[UIImageView alloc] initWithFrame:progressView.frame];
-        loadFailureView.image = PYLoadFailureImage;
+        loadFailureView.image = [NSBundle py_imageNamed:@"imageerror"];
         loadFailureView.hidden = YES;
         [self addSubview:loadFailureView];
         self.loadFailureView = loadFailureView;
@@ -94,7 +94,7 @@ static BOOL _showOrHiddenAnimating;
         
         // 删除图片
         UIImageView *deleteImageView = [[UIImageView alloc] init];
-        [deleteImageView setImage:PYDeleteImage];
+        [deleteImageView setImage:[NSBundle py_imageNamed:@"deleteimage"]];
         deleteImageView.py_size = CGSizeMake(15, 15);
         deleteImageView.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.5];
         deleteImageView.userInteractionEnabled = YES;
@@ -106,7 +106,7 @@ static BOOL _showOrHiddenAnimating;
         // 取消自动布局
         self.autoresizingMask = UIViewAutoresizingNone;
         // 设置图片为默认图片
-        self.image = self.photosView.placeholderImage ?: PYPlaceholderImage;
+        self.image = self.photosView.placeholderImage ?: [NSBundle py_imageNamed:@"placeholderimage"];
     }
     return self;
 }
