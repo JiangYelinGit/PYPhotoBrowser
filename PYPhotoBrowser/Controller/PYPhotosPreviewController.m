@@ -57,10 +57,10 @@
 - (void)viewDidLayoutSubviews
 {
     [super viewDidLayoutSubviews];
-    if (self.isFirst) {
-        self.collectionView.contentOffset = CGPointMake(self.selectedPhotoView.tag * self.collectionView.py_width, 0);
-        self.isFirst = NO;
-    }
+//    if (self.isFirst) {
+//        self.collectionView.contentOffset = CGPointMake(self.selectedPhotoView.tag * self.collectionView.py_width, 0);
+//        self.isFirst = NO;
+//    }
 }
 
 - (void)viewDidLoad {
@@ -82,24 +82,24 @@
     return UIStatusBarStyleDefault;
 }
 
-/* 返回状态栏隐藏动画模式 */
-- (UIStatusBarAnimation)preferredStatusBarUpdateAnimation
-{
-    return UIStatusBarAnimationSlide;
-}
+///* 返回状态栏隐藏动画模式 */
+//- (UIStatusBarAnimation)preferredStatusBarUpdateAnimation
+//{
+//    return UIStatusBarAnimationSlide;
+//}
 
-/* 返回状态栏是否隐藏 */
-- (BOOL)prefersStatusBarHidden
-{
-    return self.isStatusBarHidden;
-}
+///* 返回状态栏是否隐藏 */
+//- (BOOL)prefersStatusBarHidden
+//{
+//    return self.isStatusBarHidden;
+//}
 
 /* 改变状态栏状态 */
 - (void)changeNavBarState
 {
     // 如果正在执行动画，直接返回
-    if (self.isNavBarAnimating) return;
-    CGFloat duration = 0.5;
+//    if (self.isNavBarAnimating) return;
+//    CGFloat duration = 0.5;
     //    [UIView animateWithDuration:duration animations:^{
     //        self.navBarAnimating = YES;
     //        self.statusBarHidden = self.navigationController.navigationBar.py_y > 0;
@@ -108,9 +108,9 @@
     //    } completion:nil];
     [self.navigationController.navigationBar setHidden:self.statusBarHidden];
     self.statusBarHidden = !self.statusBarHidden;
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(duration * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        self.navBarAnimating = NO;
-    });
+//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(duration * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//        self.navBarAnimating = NO;
+//    });
 }
 
 /** 关闭 */
