@@ -48,7 +48,7 @@
     
     readerVc.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"返回" style:UIBarButtonItemStylePlain target:readerVc action:@selector(backAction)];
     readerVc.navigationController.navigationBar.backIndicatorImage = nil;
-    readerVc.navigationController.navigationBar.backgroundColor = [UIColor blackColor];
+    readerVc.navigationController.navigationBar.backgroundColor = [UIColor whiteColor];
     readerVc.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemTrash target:readerVc action:@selector(trashDidClicked)];
     
     return readerVc;
@@ -79,7 +79,7 @@
 /** 返回状态栏style */
 - (UIStatusBarStyle)preferredStatusBarStyle
 {
-    return UIStatusBarStyleLightContent;
+    return UIStatusBarStyleDefault;
 }
 
 /* 返回状态栏隐藏动画模式 */
@@ -100,12 +100,14 @@
     // 如果正在执行动画，直接返回
     if (self.isNavBarAnimating) return;
     CGFloat duration = 0.5;
-    [UIView animateWithDuration:duration animations:^{
-        self.navBarAnimating = YES;
-        self.statusBarHidden = self.navigationController.navigationBar.py_y > 0;
-        [self setNeedsStatusBarAppearanceUpdate];
-        self.navigationController.navigationBar.py_y = self.statusBarHidden ? -self.navigationController.navigationBar.py_height : [UIApplication sharedApplication].statusBarFrame.size.height;
-    } completion:nil];
+    //    [UIView animateWithDuration:duration animations:^{
+    //        self.navBarAnimating = YES;
+    //        self.statusBarHidden = self.navigationController.navigationBar.py_y > 0;
+    //        [self setNeedsStatusBarAppearanceUpdate];
+    //        self.navigationController.navigationBar.py_y = self.statusBarHidden ? -self.navigationController.navigationBar.py_height : [UIApplication sharedApplication].statusBarFrame.size.height;
+    //    } completion:nil];
+    [self.navigationController.navigationBar setHidden:self.statusBarHidden];
+    self.statusBarHidden = !self.statusBarHidden;
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(duration * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         self.navBarAnimating = NO;
     });
